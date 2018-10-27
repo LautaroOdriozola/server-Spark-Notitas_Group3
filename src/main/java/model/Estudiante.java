@@ -9,6 +9,7 @@ public class Estudiante{
 	int legajo;
 	List<Asignacion> asignaciones;
 	String usuarioGithub;
+	String token;
 	
 public Estudiante(){
 		
