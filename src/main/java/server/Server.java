@@ -8,7 +8,7 @@ public class Server {
 		
 		Fixture.initialize();
 		
-		Spark.port(9000);
+		Spark.port(8080);
 		Router.configure();
 	}
 }
