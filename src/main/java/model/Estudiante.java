@@ -9,7 +9,7 @@ public class Estudiante{
 	int legajo;
 	List<Asignacion> asignaciones;
 	String usuarioGithub;
-	String token;
+		
 	
 public Estudiante(){
 		
@@ -30,7 +30,6 @@ public Estudiante(){
 				get().
 				getUltimaNota();
 	}
-	
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;

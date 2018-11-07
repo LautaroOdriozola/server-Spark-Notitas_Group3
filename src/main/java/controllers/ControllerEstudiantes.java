@@ -1,25 +1,53 @@
 package controllers;
 
 import repositories.RepoEstudiantes;
+import repositories.RepoUsuarios;
 
 import java.util.List;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import model.Asignacion;
 import model.Estudiante;
+import model.Usuario;
 import spark.Request;
 import spark.Response;
 
 public class ControllerEstudiantes {
 
-	public static int nuevoAlumno(Request req, Response res) {
+	public static int nuevoAlumno(Request req, Response res) throws Exception {
 		String token = req.headers("TOKEN");
 		
+		String estudianteEnJSON = req.body();
 		
-		String estudianteEnString = req.body();
-		//Este body viene en JSON-> hay que desjsonearlo y mandarselo al repo
-		//RepoEstudiantes.getInstance().nuevoEstudiante(nuevoEstudiante(token, estudiante);
-		 return 1;
-			
+		Estudiante nuevo = parsearEstudiante(estudianteEnJSON);
+		
+		RepoEstudiantes.getInstance().nuevoEstudiante(nuevo, token);
+		
+		return 1;			
+	}
+
+	
+	public static Estudiante parsearEstudiante(String jsonEstudiante) throws Exception {
+		
+		JsonElement jelement = new JsonParser().parse(jsonEstudiante);
+		
+		JsonObject gsonObj = jelement.getAsJsonObject();
+		
+		int legajo = gsonObj.get("code").getAsInt();
+		String firstName = gsonObj.get("first_name").getAsString();
+		String lastName = gsonObj.get("last_name").getAsString();
+		String usuarioGitHub = gsonObj.get("github_user").getAsString();		
+		
+		Estudiante estudianteParseado = new Estudiante();
+		estudianteParseado.setNombre(firstName);
+		estudianteParseado.setApellido(lastName);
+		estudianteParseado.setLegajo(legajo);
+		estudianteParseado.setusuarioGithub(usuarioGitHub);
+		
+		return estudianteParseado;		// Devuelvo un nuevo estudiante en un objeto.
 	}
 
 	public static Estudiante obtenerAlumno(Request req, Response res) {
@@ -28,6 +56,29 @@ public class ControllerEstudiantes {
 		return RepoEstudiantes.getInstance().devolverEstudiante(token);
 
 	}
+	
+	public static String obtenerToken(Request req, Response res) {
+		String infoUserEnJSON = req.headers("USERNUEVO");
+		
+		/*JsonElement jelement = new JsonParser().parse(infoUserEnJSON);
+		
+		JsonObject gsonObj = jelement.getAsJsonObject();
+		
+		String user = gsonObj.get("usuario").getAsString();
+		String pw = gsonObj.get("password").getAsString();*/
+		
+		Usuario nuevo = new Usuario();
+		nuevo.setUser(infoUserEnJSON);
+		nuevo.setPassword("lauti1234");
+		
+		System.out.println("ME LLEGO EL USER = " + infoUserEnJSON);
+		
+		String token = RepoUsuarios.getInstance().devolverToken(nuevo);
+		System.out.println("EL TOKEN ENCONTRADO ES = " + token);
+		
+		return token;		
+		
+	}
 
 	public static List<Asignacion> obtenerNotasAlumno(Request req, Response res) {
 		String token = req.headers("TOKEN");
@@ -35,5 +86,7 @@ public class ControllerEstudiantes {
 		return RepoEstudiantes.getInstance().devolverNotasEstudiante(token);
 		
 	}
+	
+	//public static String obtenerToken(Request req, Response res) {}
 	
 }

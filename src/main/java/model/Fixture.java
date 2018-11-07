@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import repositories.RepoEstudiantes;
+import repositories.RepoUsuarios;
 
 public class Fixture {
 
@@ -19,7 +20,7 @@ public class Fixture {
 		lautaroOdriozola.setNombre("Lautaro");
 		lautaroOdriozola.setApellido("Odriozola");
 		lautaroOdriozola.setLegajo(1566076);
-		lautaroOdriozola.setusuarioGithub("lautaroOdriozola");
+		lautaroOdriozola.setusuarioGithub("lautaroOdriozola");		
 		
 		Asignacion tpArena = new Asignacion();
 		tpArena.setNombre("TP ARENA");
@@ -58,7 +59,16 @@ public class Fixture {
 		RepoEstudiantes.getInstance().nuevoEstudiante(naylaWinter, "AA");
 		RepoEstudiantes.getInstance().nuevoEstudiante(lautaroOdriozola, "aaaa");
 		
-		//RepoEstudiantes.getInstance().setEstudianteSeleccionado(naylaWinter);
+		Usuario naylaWinterUser = new Usuario();
+		naylaWinterUser.setUser("naylaWinter");
+		naylaWinterUser.setPassword("nayla1234");
+		
+		Usuario lautaroOdriozolaUser = new Usuario();
+		lautaroOdriozolaUser.setUser("LautaroOdriozola");
+		lautaroOdriozolaUser.setPassword("lauti1234");
+		
+		RepoUsuarios.getInstance().nuevoUser("AA",naylaWinterUser);
+		RepoUsuarios.getInstance().nuevoUser("aaaa",lautaroOdriozolaUser);
 		
 	}
 	
