@@ -5,19 +5,16 @@ import java.util.List;
 
 public class Asignacion{
 	String nombre;
-	String ultimaNota;
-	String estado;
+	//String estado;	
+	List<String> notas;
 	
-	boolean califNumerica;
-	List<String> notas;// = new ArrayList<String>();
-	
-	public Asignacion(String _nombre, boolean _califNum){
-		nombre = _nombre;
-		califNumerica = _califNum;
+	public Asignacion(){
+		//this.notas = new ArrayList<String>();
 	}
 	
-	public void setUltimaNota(String nota) {
-		this.ultimaNota = nota;
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 	public String getUltimaCalificacion() {
@@ -41,7 +38,7 @@ public class Asignacion{
 		return nombre;
 	}
 	
-	public void setEstado(String estado) {
+	/*public void setEstado(String estado) {
 		this.estado = estado;
 	}
 	
@@ -63,6 +60,6 @@ public class Asignacion{
 	
 	public String getEstado() {
 		return this.revisarEstado();
-	}
+	}*/
 	
 }

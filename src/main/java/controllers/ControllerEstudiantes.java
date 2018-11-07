@@ -17,7 +17,7 @@ public class ControllerEstudiantes {
 		
 		String estudianteEnString = req.body();
 		//Este body viene en JSON-> hay que desjsonearlo y mandarselo al repo
-		 RepoEstudiantes.getInstance().nuevoEstudiante(nuevoEstudiante(token, estudiante);
+		//RepoEstudiantes.getInstance().nuevoEstudiante(nuevoEstudiante(token, estudiante);
 		 return 1;
 			
 	}

@@ -1,9 +1,11 @@
 package model;
+import java.util.List;
+
 import spark.ResponseTransformer;
 
 public class JsonTransformer implements ResponseTransformer {
 
-    public String render(Estudiante alum) {
+    public String renderEstudiante(Estudiante alum) {
     	String aDevolver = "{ \" code\" : \"" +  alum.getLegajo() + "\"," +
                 " \"first_name\":\"" + alum.getNombre() + "\"," + 
                 " \"last_name\":\"" +  alum.getApellido() + "\"," +
@@ -11,6 +13,20 @@ public class JsonTransformer implements ResponseTransformer {
     		
     		return aDevolver;
          	
+    }
+    
+    public String renderCalificaciones(List<Asignacion> asignaciones) {
+    	
+    	
+    	/*String aDevolver = "{ \" code\" : \"" +  alum.getLegajo() + "\"," +
+                " \"first_name\":\"" + alum.getNombre() + "\"," + 
+                " \"last_name\":\"" +  alum.getApellido() + "\"," +
+                " \"github_user\":\"" + alum.getusuarioGithub() + "\"}" ;
+    	*/
+    	
+    	// La idea es que el json devuelva una lista de materias y que cada materia tenga una lista de notas.
+    	
+    	return "";
     }
 
 	@Override

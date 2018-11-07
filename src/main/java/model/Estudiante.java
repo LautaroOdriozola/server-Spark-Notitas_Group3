@@ -13,8 +13,7 @@ public class Estudiante{
 	
 public Estudiante(){
 		
-	}
-	
+	}	
 	
 	public void crearListaAsignaciones() {
 		asignaciones = new ArrayList<Asignacion>();
