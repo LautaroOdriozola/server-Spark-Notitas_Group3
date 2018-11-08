@@ -22,6 +22,8 @@ public class ControllerEstudiantes {
 		
 		String estudianteEnJSON = req.body();
 		
+		System.out.println("Me llego el body = " + estudianteEnJSON);
+		
 		Estudiante nuevo = parsearEstudiante(estudianteEnJSON);
 		
 		RepoEstudiantes.getInstance().nuevoEstudiante(nuevo, token);
@@ -36,10 +38,11 @@ public class ControllerEstudiantes {
 		
 		JsonObject gsonObj = jelement.getAsJsonObject();
 		
-		int legajo = gsonObj.get("code").getAsInt();
-		String firstName = gsonObj.get("first_name").getAsString();
-		String lastName = gsonObj.get("last_name").getAsString();
-		String usuarioGitHub = gsonObj.get("github_user").getAsString();		
+		String legajoString = gsonObj.get("legajo").getAsString();
+		int legajo = Integer.parseInt(legajoString);
+		String firstName = gsonObj.get("nombre").getAsString();
+		String lastName = gsonObj.get("apellido").getAsString();
+		String usuarioGitHub = gsonObj.get("usuarioGithub").getAsString();		
 		
 		Estudiante estudianteParseado = new Estudiante();
 		estudianteParseado.setNombre(firstName);
