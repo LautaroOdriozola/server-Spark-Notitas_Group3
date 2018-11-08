@@ -8,10 +8,7 @@ public class Asignacion{
 	//String estado;	
 	List<String> notas;
 	
-	public Asignacion(){
-		//this.notas = new ArrayList<String>();
-	}
-	
+	public Asignacion(){}	
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;

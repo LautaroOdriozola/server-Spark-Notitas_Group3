@@ -23,7 +23,7 @@ public class Fixture {
 		lautaroOdriozola.setusuarioGithub("lautaroOdriozola");		
 		
 		Asignacion tpArena = new Asignacion();
-		tpArena.setNombre("TP ARENA");
+		tpArena.setNombre("Analisis de sistemas");
 		//tpArena.setCalifNumerica(false);
 		tpArena.crearLista();
 		tpArena.agregarNota("B");

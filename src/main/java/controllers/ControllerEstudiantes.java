@@ -52,8 +52,7 @@ public class ControllerEstudiantes {
 
 	public static Estudiante obtenerAlumno(Request req, Response res) {	
 		String token = req.headers("Authorization");
-		
-		System.out.println("EL TOKEN ENCONTRADO ES = " + token);
+
 		return RepoEstudiantes.getInstance().devolverEstudiante(token);
 	}
 	
@@ -68,6 +67,7 @@ public class ControllerEstudiantes {
 		System.out.println("ME LLEGO EL USER = " + user);		
 		System.out.println("ME LLEGO LA PW = " + password);		
 		String token = RepoUsuarios.getInstance().devolverToken(nuevo);
+		System.out.println("EL TOKEN ENCONTRADO ES = " + token);
 		
 		return token;		
 		
@@ -78,8 +78,6 @@ public class ControllerEstudiantes {
 		
 		return RepoEstudiantes.getInstance().devolverNotasEstudiante(token);
 		
-	}
-	
-	//public static String obtenerToken(Request req, Response res) {}
+	}	
 	
 }
