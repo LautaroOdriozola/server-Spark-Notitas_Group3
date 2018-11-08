@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Estudiante{
+	
+	int legajo;
 	String nombre;
 	String apellido;
-	int legajo;
-	List<Asignacion> asignaciones;
 	String usuarioGithub;
-		
+	List<Asignacion> asignaciones;		
 	
 public Estudiante(){
 		

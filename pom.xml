@@ -37,6 +37,13 @@
 			<artifactId>spark-core</artifactId>
 			<version>2.7.2</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
+		<dependency>
+    		<groupId>org.eclipse.jetty</groupId>
+    		<artifactId>jetty-server</artifactId>
+    		<version>9.3.6.v20151106</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.sparkjava</groupId>
@@ -50,12 +57,13 @@
 			<version>0.5</version>
 		</dependency>
 
-    	<dependency>
-        	<groupId>com.google.code.gson</groupId>
-      	  	<artifactId>gson</artifactId>
-        	<version>2.2.2</version>
-        	<scope>compile</scope>
-    	</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+    		<groupId>com.google.code.gson</groupId>
+    		<artifactId>gson</artifactId>
+    		<version>2.6.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

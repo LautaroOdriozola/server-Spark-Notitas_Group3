@@ -18,7 +18,7 @@ import spark.Response;
 public class ControllerEstudiantes {
 
 	public static int nuevoAlumno(Request req, Response res) throws Exception {
-		String token = req.headers("TOKEN");
+		String token = req.headers("Authorization");
 		
 		String estudianteEnJSON = req.body();
 		
@@ -50,38 +50,31 @@ public class ControllerEstudiantes {
 		return estudianteParseado;		// Devuelvo un nuevo estudiante en un objeto.
 	}
 
-	public static Estudiante obtenerAlumno(Request req, Response res) {
-		String token = req.headers("TOKEN");
-
+	public static Estudiante obtenerAlumno(Request req, Response res) {	
+		String token = req.headers("Authorization");
+		
+		System.out.println("EL TOKEN ENCONTRADO ES = " + token);
 		return RepoEstudiantes.getInstance().devolverEstudiante(token);
-
 	}
 	
 	public static String obtenerToken(Request req, Response res) {
-		String infoUserEnJSON = req.headers("USERNUEVO");
-		
-		/*JsonElement jelement = new JsonParser().parse(infoUserEnJSON);
-		
-		JsonObject gsonObj = jelement.getAsJsonObject();
-		
-		String user = gsonObj.get("usuario").getAsString();
-		String pw = gsonObj.get("password").getAsString();*/
+		String user = req.headers("User");
+		String password = req.headers("Password");		
 		
 		Usuario nuevo = new Usuario();
-		nuevo.setUser(infoUserEnJSON);
-		nuevo.setPassword("lauti1234");
+		nuevo.setUser(user);
+		nuevo.setPassword(password);
 		
-		System.out.println("ME LLEGO EL USER = " + infoUserEnJSON);
-		
+		System.out.println("ME LLEGO EL USER = " + user);		
+		System.out.println("ME LLEGO LA PW = " + password);		
 		String token = RepoUsuarios.getInstance().devolverToken(nuevo);
-		System.out.println("EL TOKEN ENCONTRADO ES = " + token);
 		
 		return token;		
 		
 	}
 
 	public static List<Asignacion> obtenerNotasAlumno(Request req, Response res) {
-		String token = req.headers("TOKEN");
+		String token = req.headers("Authorization");
 		
 		return RepoEstudiantes.getInstance().devolverNotasEstudiante(token);
 		

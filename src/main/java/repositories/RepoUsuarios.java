@@ -46,7 +46,7 @@ public class RepoUsuarios {
 		    String token = entry.getKey();
 		    Usuario userDeMap = entry.getValue();
 		    
-		    if(nuevoUser.equalsIgnoreCase(userDeMap.getUser())) {
+		    if(nuevoUser.equalsIgnoreCase(userDeMap.getUser()) && nuevaPW.equalsIgnoreCase(userDeMap.getPassword())) {
 		    	tokenADevolver = token;
 		    } 		    
 		}
