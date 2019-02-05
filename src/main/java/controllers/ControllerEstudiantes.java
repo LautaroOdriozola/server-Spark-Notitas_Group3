@@ -5,6 +5,7 @@ import repositories.RepoUsuarios;
 
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -34,21 +35,9 @@ public class ControllerEstudiantes {
 	
 	public static Estudiante parsearEstudiante(String jsonEstudiante) throws Exception {
 		
-		JsonElement jelement = new JsonParser().parse(jsonEstudiante);
-		
-		JsonObject gsonObj = jelement.getAsJsonObject();
-		
-		String legajoString = gsonObj.get("legajo").getAsString();
-		int legajo = Integer.parseInt(legajoString);
-		String firstName = gsonObj.get("nombre").getAsString();
-		String lastName = gsonObj.get("apellido").getAsString();
-		String usuarioGitHub = gsonObj.get("usuarioGithub").getAsString();		
-		
-		Estudiante estudianteParseado = new Estudiante();
-		estudianteParseado.setNombre(firstName);
-		estudianteParseado.setApellido(lastName);
-		estudianteParseado.setLegajo(legajo);
-		estudianteParseado.setusuarioGithub(usuarioGitHub);
+		Gson gson = new Gson();
+		Estudiante estudianteParseado = new Estudiante();		
+		estudianteParseado = gson.fromJson(jsonEstudiante, Estudiante.class);
 		
 		return estudianteParseado;		// Devuelvo un nuevo estudiante en un objeto.
 	}
